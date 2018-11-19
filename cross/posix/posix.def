@@ -1,0 +1,33 @@
+EXPORTS
+	read
+	write
+	close
+
+	sleep
+	usleep
+	random
+	srandom
+
+	pipe
+	kill
+
+	clock_gettime
+
+	cpoll_startup
+	cpoll_create
+	cpoll_ctl
+	cpoll_wait
+	cpoll_close
+	cpoll_cleanup
+
+	dlsym
+	dlopen
+	dlerror
+
+	sigfillset
+	sigemptyset
+	sigaction
+
+	flock
+	daemon
+	strsep

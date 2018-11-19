@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{40ABB0C7-71B7-4E2E-A8C8-DB81B0C928EB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>lua</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)inter\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)inter\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)inter\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)inter\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LUA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)cross\pthreads.2;$(SolutionDir)skynet\skynet-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D "LUA_BUILD_AS_DLL" /D "USE_PTHREAD_LOCK" /D "HAVE_STRUCT_TIMESPEC" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;LUA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)cross\pthreads.2;$(SolutionDir)skynet\skynet-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D "LUA_BUILD_AS_DLL" /D "USE_PTHREAD_LOCK" /D "HAVE_STRUCT_TIMESPEC" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LUA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)cross\pthreads.2;$(SolutionDir)skynet\skynet-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D "LUA_BUILD_AS_DLL" /D "USE_PTHREAD_LOCK" /D "HAVE_STRUCT_TIMESPEC" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;LUA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)cross\pthreads.2;$(SolutionDir)skynet\skynet-src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D "LUA_BUILD_AS_DLL" /D "USE_PTHREAD_LOCK" /D "HAVE_STRUCT_TIMESPEC" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\skynet\3rd\lua\lapi.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lauxlib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lbaselib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lbitlib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lcode.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lcorolib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lctype.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\ldblib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\ldebug.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\ldo.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\ldump.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lfunc.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lgc.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\linit.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\liolib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\llex.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lmathlib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lmem.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\loadlib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lobject.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lopcodes.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\loslib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lparser.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lstate.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lstring.c">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)cross\gcc\gcc.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)cross\gcc\gcc.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)cross\gcc\gcc.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)cross\gcc\gcc.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="..\..\skynet\3rd\lua\lstrlib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\ltable.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\ltablib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\ltm.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lundump.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lutf8lib.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lvm.c" />
+    <ClCompile Include="..\..\skynet\3rd\lua\lzio.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\skynet\3rd\lua\lapi.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lauxlib.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lcode.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lctype.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\ldebug.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\ldo.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lfunc.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lgc.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\llex.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\llimits.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lmem.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lobject.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lopcodes.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lparser.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lprefix.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lstate.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lstring.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\ltable.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\ltm.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lua.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lua.hpp" />
+    <ClInclude Include="..\..\skynet\3rd\lua\luaconf.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lualib.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lundump.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lvm.h" />
+    <ClInclude Include="..\..\skynet\3rd\lua\lzio.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cross\gcc\gcc.vcxproj">
+      <Project>{3f98197a-a1ea-4649-9a86-10a2c334350f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cross\pthreads.2\pthread.vcxproj">
+      <Project>{4093aa6c-512e-4d33-a04d-353169ab6fda}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
