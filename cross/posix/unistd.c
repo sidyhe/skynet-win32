@@ -45,25 +45,36 @@ typedef struct _KERNEL_USER_TIMES {
 } KERNEL_USER_TIMES;
 typedef KERNEL_USER_TIMES *PKERNEL_USER_TIMES;
 
+int read_console(char* ptr, size_t size)
+{
+	size_t i = 0;
+
+	while (i < size)
+	{
+		if (!_kbhit())
+			break;
+		const int c = _getch();
+
+		if (!c)
+			continue;
+
+		ptr[i++] = (c & 0xFF);
+		_putch(c);
+
+		if (c == '\r')
+		{
+			_putch('\n');
+			ptr[i - 1] = '\n';
+		}
+	}
+
+	return (int)i;
+}
+
 int read(int fd, void *buffer, size_t sz)
 {
 	if (fd == 0) {
-		char *buf = (char *)buffer;
-		while (buf - (char *)buffer < sz) {
-
-			if (!_kbhit())
-				break;
-			char ch = _getch();
-			*buf++ = ch;
-			_putch(ch);
-			if (ch == '\r') {
-				if (buf - (char *)buffer >= sz)
-					break;
-				*buf++ = '\n';
-				_putch('\n');
-			}
-		}
-		return buf - (char *)buffer;
+		return read_console((char*)buffer, sz);
 	}
 
 	WSABUF vecs[1];
@@ -83,15 +94,16 @@ int read(int fd, void *buffer, size_t sz)
 
 int write(int fd, const void *ptr, size_t sz)
 {
-	WSABUF vecs[1];
-	vecs[0].buf = ptr;
-	vecs[0].len = sz;
+	WSABUF wb;
+	DWORD NumberOfBytesSent;
 
-	DWORD bytesSent;
-	if (WSASend(fd, vecs, 1, &bytesSent, 0, NULL, NULL))
+	wb.len = sz;
+	wb.buf = (char*)ptr;
+
+	if (WSASend(fd, &wb, 1, &NumberOfBytesSent, 0, NULL, NULL))
 		return -1;
 	else
-		return bytesSent;
+		return NumberOfBytesSent;
 }
 
 int close(int fd)
